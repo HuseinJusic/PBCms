@@ -1,4 +1,5 @@
 plugins {
+  id("com.netflix.dgs.codegen") version "5.1.17" apply false
   id "io.spring.dependency-management" version "1.0.11.RELEASE"
   id 'java'
   id 'groovy'
@@ -13,6 +14,10 @@ subprojects {
   apply plugin: 'io.spring.dependency-management'
   apply plugin: 'java-library'
 
+  test {
+    useJUnitPlatform()
+  }
+
   repositories {
     mavenCentral()
   }
@@ -24,3 +29,5 @@ subprojects {
   }
 
 }
+
+

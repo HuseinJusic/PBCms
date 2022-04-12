@@ -1,8 +1,4 @@
-type Query {
-    user: [RegisteredUser]
-}
-
-type Mutation {
+extend type Mutation {
     registerUser(email: String, username: String, password: String): RegisteredUser
 }
 

@@ -1,0 +1,18 @@
+"""
+Providing base `Query` type such that modules can extend it.
+"""
+type Query {
+    version: String
+}
+"""
+Providing base `Mutation` type such that modules can extend it.
+"""
+type Mutation {
+    versionChange: String
+    registerUser(email: String, username: String, password: String): RegisteredUser
+}
+
+type RegisteredUser {
+    username: String!
+    email: String!
+}

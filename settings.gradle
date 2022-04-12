@@ -1,5 +1,4 @@
 include 'common'
-include 'infrastructure'
 include 'user'
 include 'configuration'
 

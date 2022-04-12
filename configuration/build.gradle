@@ -1,11 +1,23 @@
 plugins {
     id 'java'
     id "org.springframework.boot" version "2.6.4"
+    id("com.netflix.dgs.codegen")
 }
 
 dependencies {
     implementation project(':common')
-    implementation project(':infrastructure')
-    implementation project(':user')
     implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'org.projectlombok:lombok:1.18.20'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+generateJava{
+    schemaPaths = ["${projectDir}/src/main/resources/schema", "${projectDir}/../user/src/main/resources/schema"] // List of directories containing schema files
+    packageName = 'com.hjusic' // The package name to use to generate sources
+    generateClient = true // Enable generating the type safe query API
 }

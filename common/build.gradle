@@ -1,15 +1,30 @@
+plugins {
+    id 'groovy'
+}
+
 dependencies {
-    implementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:latest.release"))
+    implementation "com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter"
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'io.vavr:vavr:0.9.0'
+    implementation 'io.micrometer:micrometer-core:1.8.4'
     testImplementation 'junit:junit:4.13'
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+    testImplementation 'org.codehaus.groovy:groovy-all:3.0.8'
+    testImplementation('org.spockframework:spock-spring:2.0-M3-groovy-3.0')
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 }
 
 test {
-    useJUnit()
-
+    useJUnitPlatform()
     maxHeapSize = '1G'
 }
